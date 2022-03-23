@@ -45,3 +45,5 @@ SELECT name, species, escape_attempts FROM animals WHERE escape_attempts = (SELE
 
 SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+SELECT  animals.id, name, full_name FROM animals INNER JOIN owners ON animals.owners_id = owners.id;
