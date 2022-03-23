@@ -51,3 +51,9 @@ FROM (
   SELECT name, full_name FROM animals, owners WHERE animals.owners_id = owners.id
 ) t
 WHERE full_name = 'Melody Pond';
+
+SELECT animal, species
+FROM (
+  SELECT animals.name AS Animal, species.name AS Species FROM animals, species WHERE animals.species_id = species.id
+) t
+WHERE species = 'Pokemon';
