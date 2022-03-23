@@ -68,3 +68,4 @@ FROM (
 ) t
 WHERE full_name = 'Jennifer Orwell' AND name LIKE '%mon';
 
+SELECT full_name, name, escape_attempts FROM(SELECT full_name, name, escape_attempts FROM animals INNER JOIN owners ON animals.owners_id = owners.id) t WHERE full_name = 'Dean Winchester' AND escape_attempts < 0;
