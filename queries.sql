@@ -57,3 +57,5 @@ FROM (
   SELECT animals.name AS Animal, species.name AS Species FROM animals, species WHERE animals.species_id = species.id
 ) t
 WHERE species = 'Pokemon';
+
+SELECT name, full_name FROM animals FULL OUTER JOIN owners ON animals.owners_id = owners.id;
