@@ -2,13 +2,7 @@
 
 -- DROP TABLE vets;
 
-CREATE TABLE specializations (
-	vets_id                INT NOT NULL,
- species_id             INT NOT NULL,
- FOREIGN KEY (vets_id) REFERENCES vets (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-	FOREIGN KEY (species_id) REFERENCES species (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-	PRIMARY KEY (vets_id, species_id)
-);
+
 
 CREATE TABLE visits (
  id                     SERIAL PRIMARY KEY,
