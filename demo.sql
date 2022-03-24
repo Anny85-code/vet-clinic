@@ -16,4 +16,4 @@ What specialty should Maisy Smith consider getting? Look for the species she get
 
 -- SELECT a.name, COUNT(date_of_visit) FROM animals a JOIN visits v ON v.animals_id = a.id GROUP BY a.name ORDER BY COUNT DESC LIMIT 1;
 
-SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = ve.id JOIN animals a ON v.animals_id = a.id WHERE ve.name = 'Maisy Smith' ORDER BY date_of_visit LIMIT 1;
+SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = ve.id JOIN animals a ON v.animals_id = a.id ORDER BY date_of_visit DESC LIMIT 1;
