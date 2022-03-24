@@ -77,3 +77,5 @@ SELECT vets.name, date_of_visit, animals.name FROM animals JOIN visits ON visits
 SELECT species.name FROM specializations s JOIN vets ON s.vets_id = vets.id JOIN visits ON visits.vets_id = vets.id JOIN species ON s.species_id = species.id WHERE vets.name = 'Stephanie Mendez' GROUP BY species.name;
 
 SELECT vets.name, spe.name FROM vets FULL OUTER JOIN specializations s ON s.vets_id = vets.id  LEFT JOIN species spe ON spe.id = s.species_id;
+
+SELECT a.name, ve.name, date_of_visit FROM animals a JOIN visits v ON v.animals_id = a.id JOIN vets ve ON v.vets_id = ve.id WHERE ve.name = 'Stephanie Mendez' AND date_of_visit BETWEEN '2020-04-01' AND '2020-08-30';
