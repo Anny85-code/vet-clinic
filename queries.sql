@@ -71,3 +71,5 @@ WHERE full_name = 'Jennifer Orwell' AND name LIKE '%mon';
 SELECT full_name, name, escape_attempts FROM(SELECT full_name, name, escape_attempts FROM animals INNER JOIN owners ON animals.owners_id = owners.id) t WHERE full_name = 'Dean Winchester' AND escape_attempts < 0;
 
 SELECT full_name, COUNT(name) FROM animals, owners WHERE animals.owners_id = owners.id GROUP BY full_name ORDER BY count DESC limit 1;
+
+SELECT vets.name, date_of_visit, animals.name FROM animals JOIN visits ON visits.animals_id = animals.id JOIN vets ON visits.vets_id = vets.id WHERE vets.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1;
