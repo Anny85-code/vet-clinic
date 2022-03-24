@@ -26,3 +26,10 @@ CREATE TABLE species (
 ALTER TABLE animals ADD COLUMN species_id INT REFERENCES species;
 ALTER TABLE animals ADD COLUMN owners_id INT REFERENCES owners;
 
+CREATE TABLE vets (
+ id INT GENERATED ALWAYS AS IDENTITY,
+ name VARCHAR(250),
+ age INT,
+ date_of_graduation DATE,
+ PRIMARY KEY (id)
+);
