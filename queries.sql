@@ -45,3 +45,29 @@ SELECT name, species, escape_attempts FROM animals WHERE escape_attempts = (SELE
 
 SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;
+
+SELECT full_name, name
+FROM (
+  SELECT name, full_name FROM animals, owners WHERE animals.owners_id = owners.id
+) t
+WHERE full_name = 'Melody Pond';
+
+SELECT animal, species
+FROM (
+  SELECT animals.name AS Animal, species.name AS Species FROM animals, species WHERE animals.species_id = species.id
+) t
+WHERE species = 'Pokemon';
+
+SELECT name, full_name FROM animals FULL OUTER JOIN owners ON animals.owners_id = owners.id;
+
+SELECT species, COUNT(species) FROM (SELECT animals.name AS Animal, species.name AS Species FROM animals INNER JOIN species ON animals.species_id = species.id)_ GROUP BY species;
+
+SELECT full_name, name
+FROM (
+  SELECT name, full_name FROM animals, owners WHERE animals.owners_id = owners.id
+) t
+WHERE full_name = 'Jennifer Orwell' AND name LIKE '%mon';
+
+SELECT full_name, name, escape_attempts FROM(SELECT full_name, name, escape_attempts FROM animals INNER JOIN owners ON animals.owners_id = owners.id) t WHERE full_name = 'Dean Winchester' AND escape_attempts < 0;
+
+SELECT full_name, COUNT(name) FROM animals, owners WHERE animals.owners_id = owners.id GROUP BY full_name ORDER BY count DESC limit 1;
