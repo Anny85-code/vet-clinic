@@ -26,7 +26,7 @@
 
 
 
-SELECT species.name FROM specializations s JOIN vets ON s.vets_id = vets.id JOIN visits ON visits.vets_id = vets.id JOIN species ON s.species_id = species.id WHERE vets.name = 'Stephanie Mendez' GROUP BY species.name;
+
 SELECT vets.name AS vet_name, spe.name AS spe_name FROM vets FULL JOIN specializations s ON s.vets_id = vets.id LEFT JOIN species spe ON s.species_id = spe.id;
 SELECT vt.name AS vet_name, a.name AS anis_name, date_of_visit FROM visits v JOIN animals a ON v.animals_id = a.id JOIN vets vt ON v.vets_id = vt.id WHERE vt.name = 'Stephanie Mendez' AND date_of_visit BETWEEN '2020-04-01' AND '2020-08-30'
 SELECT name, COUNT(date_of_birth) FROM animals a JOIN visits v ON a.id = v.animals_id GROUP BY a.name ORDER BY count DESC LIMIT 1;
