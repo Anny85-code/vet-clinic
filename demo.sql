@@ -4,14 +4,7 @@
 
 
 
-CREATE TABLE visits (
- id                     SERIAL PRIMARY KEY,
-	animals_id             INT NOT NULL,
-	vets_id                INT NOT NULL,
- date_of_visit          DATE NOT NULL,
-	FOREIGN KEY (animals_id) REFERENCES animals (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-	FOREIGN KEY (vets_id) REFERENCES vets (id) ON DELETE RESTRICT ON UPDATE CASCADE
-);
+
 
 INSERT INTO vets(name, age, date_of_graduation) VALUES('William Tatcher', 45, '2000-04-23'),('Maisy Smith', 26, '2019-01-17'),('Stephanie Mendez', 64, '1981-05-04'),('Jack Harkness', 38, '2008-06-08');
 
