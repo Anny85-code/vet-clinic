@@ -87,3 +87,5 @@ SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = 
 SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = ve.id JOIN animals a ON v.animals_id = a.id ORDER BY date_of_visit DESC LIMIT 1;
 
 SELECT COUNT(*) FROM visits JOIN animals ON animals.id = visits.animals_id JOIN vets ON vets.id = visits.vets_id JOIN specializations ON specializations.vets_id = visits.vets_id WHERE animals.species_id != specializations.species_id;
+
+SELECT COUNT(sp.name), sp.name FROM visits v JOIN animals a ON v.animals_id = a.id JOIN species sp ON a.species_id = sp.id JOIN vets vt ON v.vets_id = vt.id WHERE vets_id = 2 GROUP BY(sp.name) limit 1;
