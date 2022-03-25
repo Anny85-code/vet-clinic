@@ -71,3 +71,21 @@ WHERE full_name = 'Jennifer Orwell' AND name LIKE '%mon';
 SELECT full_name, name, escape_attempts FROM(SELECT full_name, name, escape_attempts FROM animals INNER JOIN owners ON animals.owners_id = owners.id) t WHERE full_name = 'Dean Winchester' AND escape_attempts < 0;
 
 SELECT full_name, COUNT(name) FROM animals, owners WHERE animals.owners_id = owners.id GROUP BY full_name ORDER BY count DESC limit 1;
+
+SELECT vets.name, date_of_visit, animals.name FROM animals JOIN visits ON visits.animals_id = animals.id JOIN vets ON visits.vets_id = vets.id WHERE vets.name = 'William Tatcher' ORDER BY date_of_visit DESC LIMIT 1;
+
+SELECT species.name FROM specializations s JOIN vets ON s.vets_id = vets.id JOIN visits ON visits.vets_id = vets.id JOIN species ON s.species_id = species.id WHERE vets.name = 'Stephanie Mendez' GROUP BY species.name;
+
+SELECT vets.name, spe.name FROM vets FULL OUTER JOIN specializations s ON s.vets_id = vets.id  LEFT JOIN species spe ON spe.id = s.species_id;
+
+SELECT a.name, ve.name, date_of_visit FROM animals a JOIN visits v ON v.animals_id = a.id JOIN vets ve ON v.vets_id = ve.id WHERE ve.name = 'Stephanie Mendez' AND date_of_visit BETWEEN '2020-04-01' AND '2020-08-30';
+
+SELECT a.name, COUNT(date_of_visit) FROM animals a JOIN visits v ON v.animals_id = a.id GROUP BY a.name ORDER BY COUNT DESC LIMIT 1;
+
+SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = ve.id JOIN animals a ON v.animals_id = a.id WHERE ve.name = 'Maisy Smith' ORDER BY date_of_visit LIMIT 1;
+
+SELECT a.name, ve.name, date_of_visit FROM visits v JOIN vets ve ON v.vets_id = ve.id JOIN animals a ON v.animals_id = a.id ORDER BY date_of_visit DESC LIMIT 1;
+
+SELECT COUNT(*) FROM visits JOIN animals ON animals.id = visits.animals_id JOIN vets ON vets.id = visits.vets_id JOIN specializations ON specializations.vets_id = visits.vets_id WHERE animals.species_id != specializations.species_id;
+
+SELECT COUNT(sp.name), sp.name FROM visits v JOIN animals a ON v.animals_id = a.id JOIN species sp ON a.species_id = sp.id JOIN vets vt ON v.vets_id = vt.id WHERE vets_id = 2 GROUP BY(sp.name) limit 1;
